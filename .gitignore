@@ -1,0 +1,25 @@
+#Android Studio Default
+.gradle
+/gradlew
+/.idea
+.DS_Store
+/build
+/captures
+
+#Additional Android Studio
+*.iml
+app/proguard-rules.pro
+
+#built application files
+*.apk
+*.ap_
+
+#Configuration
+local.properties
+
+#Java Class files
+*.class
+
+#Eclipse project files
+.classpath
+.project
