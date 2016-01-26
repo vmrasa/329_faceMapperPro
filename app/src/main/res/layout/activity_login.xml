@@ -5,7 +5,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Login">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/display_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/faceMapper"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:hint="Username"
+        android:layout_below="@+id/faceMapper"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/username" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:hint="Password"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:password="true"
+        android:id="@+id/password"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/password"
+        android:text="Login"
+        android:textSize="25sp"
+        android:id="@+id/login"
+        android:onClick="loginClick"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login"
+        android:text="Register"
+        android:textSize="25sp"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="5dp"
+        android:id="@+id/register"
+        android:onClick="registerClick"/>
 
 </RelativeLayout>

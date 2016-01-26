@@ -2,11 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.iastate.ing_inc.face_mapper_pro" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="TzMFee3qehPrcItNCL3qr5aD6ZnJUWV4budtShBr" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="HEUv60cOclfJS97QSUqq2T908NkSvKXnzOETrRS6" />
+
         <activity
             android:name=".Login"
             android:label="@string/app_name" >
@@ -15,6 +26,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".NotImplemented"
+            android:label="@string/title_activity_not_implemented" >
         </activity>
     </application>
 
