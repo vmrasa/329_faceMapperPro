@@ -36,6 +36,10 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name=".Camera"
+            android:label="@string/title_activity_camera" >
+        </activity>
     </application>
 
 </manifest>
