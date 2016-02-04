@@ -40,6 +40,14 @@
             android:name=".Camera"
             android:label="@string/title_activity_camera" >
         </activity>
+        <activity
+            android:name=".Attendence"
+            android:label="@string/title_activity_attendence" >
+        </activity>
+                <activity
+            android:name=".Classes"
+            android:label="@string/title_activity_classes" >
+        </activity>
     </application>
 
 </manifest>
