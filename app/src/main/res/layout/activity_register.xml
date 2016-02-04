@@ -107,34 +107,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cb_cs309"
-        android:id="@+id/cb_cs311"/>
+        android:id="@+id/cb_cs319"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Com Sci 311"
-        android:layout_alignTop="@+id/cb_cs311"
-        android:layout_toRightOf="@+id/cb_cs311"
+        android:text="Com Sci 319"
+        android:layout_alignTop="@+id/cb_cs319"
+        android:layout_toRightOf="@+id/cb_cs319"
         android:layout_marginLeft="15dp"
         android:textColor="#000000" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_cs311"
-        android:id="@+id/cb_cs329"/>
+        android:layout_below="@+id/cb_cs319"
+        android:id="@+id/cb_se329"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Com Sci 329"
-        android:layout_alignTop="@+id/cb_cs329"
-        android:layout_toRightOf="@+id/cb_cs329"
+        android:text="SE 329"
+        android:layout_alignTop="@+id/cb_se329"
+        android:layout_toRightOf="@+id/cb_se329"
         android:layout_marginLeft="15dp"
         android:textColor="#000000" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_cs329"
+        android:layout_below="@+id/cb_se329"
         android:id="@+id/cb_cs330"/>
     <TextView
         android:layout_width="wrap_content"
@@ -149,13 +149,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cb_cs330"
-        android:id="@+id/cb_cs339"/>
+        android:id="@+id/cb_cpre339"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Com Sci 339"
-        android:layout_alignTop="@+id/cb_cs339"
-        android:layout_toRightOf="@+id/cb_cs339"
+        android:text="CprE 339"
+        android:layout_alignTop="@+id/cb_cpre339"
+        android:layout_toRightOf="@+id/cb_cpre339"
         android:layout_marginLeft="15dp"
         android:textColor="#000000" />
 
@@ -176,7 +176,7 @@
         android:textColor="#000000"
         android:text="Take 3 Pictures"
         android:id="@+id/btn_pictures"
-        android:layout_below="@+id/cb_cs339"
+        android:layout_below="@+id/cb_cpre339"
         android:layout_alignParentLeft="true"
         android:textSize="13dp"
         android:onClick="onTakePictureCick"/>

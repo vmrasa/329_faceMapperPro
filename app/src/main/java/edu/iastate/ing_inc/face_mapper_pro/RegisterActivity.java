@@ -10,13 +10,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etUsername;
@@ -24,10 +29,10 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etPassword2;
 
     private CheckBox cbCS309;
-    private CheckBox cbCS311;
-    private CheckBox cbCS329;
+    private CheckBox cbCS319;
+    private CheckBox cbSE329;
     private CheckBox cbCS330;
-    private CheckBox cbCS339;
+    private CheckBox cprE339;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
         etPassword2 = (EditText) findViewById(R.id.et_confirm_password);
 
         cbCS309 = (CheckBox) findViewById(R.id.cb_cs309);
-        cbCS311 = (CheckBox) findViewById(R.id.cb_cs311);
-        cbCS329 = (CheckBox) findViewById(R.id.cb_cs329);
+        cbCS319 = (CheckBox) findViewById(R.id.cb_cs319);
+        cbSE329 = (CheckBox) findViewById(R.id.cb_se329);
         cbCS330 = (CheckBox) findViewById(R.id.cb_cs330);
-        cbCS339 = (CheckBox) findViewById(R.id.cb_cs339);
+        cprE339 = (CheckBox) findViewById(R.id.cb_cpre339);
     }
 
     @Override
@@ -101,9 +106,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
+                    signUpForClasses();
                     Intent intent = new Intent(RegisterActivity.this, NotImplemented.class);
                     startActivityForResult(intent, 0);
                     finish();
+                } else if (e.getCode() == ParseException.USERNAME_TAKEN) {
+                    Toast.makeText(getApplicationContext(), "Username Taken", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 } else {
                     Toast.makeText(getApplicationContext(), "Register Error", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
@@ -112,26 +121,69 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private void signUpForClasses() {
+        if (cbCS309.isChecked())
+            addStudentToClass("COMS309");
+
+        if (cbCS319.isChecked())
+            addStudentToClass("COMS319");
+
+        if (cbSE329.isChecked())
+            addStudentToClass("SE329");
+
+        if (cbCS330.isChecked())
+            addStudentToClass("COMS330");
+
+        if (cprE339.isChecked())
+            addStudentToClass("CPRE339");
+    }
+
     private String[] getClasses() {
         ArrayList<String> classes = new ArrayList<String>();
         if (cbCS309.isChecked())
             classes.add("cs309");
 
-        if (cbCS311.isChecked())
-            classes.add("cs311");
+        if (cbCS319.isChecked())
+            classes.add("cs319");
 
-        if (cbCS329.isChecked())
-            classes.add("cs329");
+        if (cbSE329.isChecked())
+            classes.add("se329");
 
         if (cbCS330.isChecked())
             classes.add("cs330");
 
-        if (cbCS339.isChecked())
-            classes.add("cs339");
+        if (cprE339.isChecked())
+            classes.add("cprE339");
 
         String[] retArray = new String[classes.size()];
         retArray = classes.toArray(retArray);
         return retArray;
+    }
+
+    private void addStudentToClass(final String classCode) {
+        ParseQuery<ParseObject> course = new ParseQuery<ParseObject>("Class");
+        course.whereContains("name", classCode);
+        course.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                if(e == null) {
+                    List<String> studentIDs = object.getList("studentIdList");
+                    studentIDs.add(ParseUser.getCurrentUser().getObjectId());
+                    object.put("studentIdList", studentIDs);
+                    object.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Not added to class " + classCode,
+                                        Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
     public void onTakePictureCick(View view) {
