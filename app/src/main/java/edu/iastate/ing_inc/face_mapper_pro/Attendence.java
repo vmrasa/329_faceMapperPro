@@ -25,16 +25,6 @@ public class Attendence extends AppCompatActivity {
 
 
        AttendenceList = (ListView) findViewById(R.id.attendence_list);
-       AttendenceList.setOnItemClickListener(new ListView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> a, View v, int i, long l) {
-               /* //This is where the next intent will be called
-               Intent mainIntent = new Intent(Settings.this,
-                       Register.class);
-               startActivity(mainIntent);
-               */
-           }
-       });
 
 
        //This arraylist should come from parse
