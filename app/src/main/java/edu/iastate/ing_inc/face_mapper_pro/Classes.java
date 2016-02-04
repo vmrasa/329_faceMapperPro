@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Attendence extends AppCompatActivity {
 
-   private ListView AttendenceList;
+   private ListView ClassesList;
    private ArrayList<String> classesArrList = new ArrayList<String>();
 
 
@@ -47,11 +47,11 @@ public class Attendence extends AppCompatActivity {
    }
 
 
-   private void generateList(ArrayList  classesList)
+   private void generateList(ArrayList  classes)
    {
        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, classes );
 
-       classesList.setAdapter(arrayAdapter);
+       ClassesList.setAdapter(arrayAdapter);
 
    }
 }
