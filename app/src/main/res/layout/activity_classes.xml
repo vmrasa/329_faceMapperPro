@@ -12,7 +12,7 @@
    <ListView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:id="@+id/attendence_list"
+       android:id="@+id/classes_list"
        android:layout_weight="1"
        android:clickable="true" />
 </LinearLayout>
