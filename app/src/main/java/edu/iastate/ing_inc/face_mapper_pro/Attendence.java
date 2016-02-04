@@ -1,4 +1,4 @@
-package edu.ing_inc.face_mapper_pro;
+package edu.iastate.ing_inc.face_mapper_pro;
 
 
 import android.content.Intent;
