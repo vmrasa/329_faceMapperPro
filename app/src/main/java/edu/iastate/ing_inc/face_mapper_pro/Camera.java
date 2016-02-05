@@ -38,6 +38,12 @@ public class Camera extends Activity {
              * OpenCV Logic
              *
              */
+             
+             /**
+              * 
+              * Redirect to Attendance
+              * 
+              */
         }
     }
 }
