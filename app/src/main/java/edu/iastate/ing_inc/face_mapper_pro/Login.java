@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
-                    Intent intent = new Intent(Login.this, NotImplemented.class);
+                    Intent intent = new Intent(Login.this, Classes.class);
                     startActivityForResult(intent, 0);
                     finish();
                 } else {

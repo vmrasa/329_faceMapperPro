@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     signUpForClasses();
-                    Intent intent = new Intent(RegisterActivity.this, NotImplemented.class);
+                    Intent intent = new Intent(RegisterActivity.this, Classes.class);
                     startActivityForResult(intent, 0);
                     finish();
                 } else if (e.getCode() == ParseException.USERNAME_TAKEN) {

@@ -41,7 +41,7 @@
             android:label="@string/title_activity_camera" >
         </activity>
         <activity
-            android:name=".Attendence"
+            android:name=".Attendance"
             android:label="@string/title_activity_attendence" >
         </activity>
                 <activity

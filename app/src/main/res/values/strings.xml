@@ -8,4 +8,6 @@
     <string name="title_activity_login_test">LoginTest</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_camera">Camera</string>
+    <string name="title_activity_attendence">Attendance</string>
+    <string name="title_activity_classes">Classes</string>
 </resources>
