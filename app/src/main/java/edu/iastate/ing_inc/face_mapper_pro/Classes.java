@@ -23,6 +23,7 @@ public class Classes extends AppCompatActivity {
 
    private ListView classesList;
    private ArrayList<String> classesArrList = new ArrayList<String>();
+    private ArrayAdapter<String> arrayAdapter;
 
 
    @Override
@@ -43,25 +44,8 @@ public class Classes extends AppCompatActivity {
            }
        });
 
-       // Get Classes that user teaches
-       ParseUser user = ParseUser.getCurrentUser();
-       ParseQuery<ParseObject> classes = new ParseQuery<ParseObject>("Class");
-       classes.whereContains("teacherID", user.getObjectId());
-       classes.findInBackground(new FindCallback<ParseObject>() {
-           @Override
-           public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                    for (int i=0; i < objects.size(); i++)
-                        classesArrList.add(objects.get(i).getString("name"));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Error on search",
-                            Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-           }
-       });
-
        // Add classes that user is a student for without duplicating
+       ParseUser user = ParseUser.getCurrentUser();
        List<String> studentClasses = user.getList("relevantClasses");
        for (int i=0; i<studentClasses.size(); i++) {
            boolean alreadyAdded = false;
@@ -76,23 +60,42 @@ public class Classes extends AppCompatActivity {
                classesArrList.add(thisClass);
        }
 
-       //This arraylist should come from parse
-//        classesArrList.add("CPRE 185");
-//        classesArrList.add("ENG 314");
-//        classesArrList.add("ComS 365");
-//        classesArrList.add("MATH 215");
-//        classesArrList.add("SE 654");
-       //end of Parse List
-       generateList( classesArrList);
-   }
+       // Get Classes that user teaches
+       ParseQuery<ParseObject> classes = new ParseQuery<ParseObject>("Class");
+       classes.whereContains("teacherID", user.getObjectId());
+       classes.findInBackground(new FindCallback<ParseObject>() {
+           @Override
+           public void done(List<ParseObject> objects, ParseException e) {
+               if (e == null) {
+                   for (int i = 0; i < objects.size(); i++)
+                       classesArrList.add(objects.get(i).getString("name"));
 
+                   generateList(classesArrList);
+               } else {
+                   Toast.makeText(getApplicationContext(), "Error on search",
+                           Toast.LENGTH_SHORT).show();
+                   e.printStackTrace();
+               }
+           }
+       });
+   }
 
    private void generateList(ArrayList  classes)
    {
-       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, classes );
+       arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, classesArrList );
 
        classesList.setAdapter(arrayAdapter);
 
+       classesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               String classCode = classesArrList.get(position);
+
+               Intent intent = new Intent(Classes.this, Attendance.class);
+//               intent.putExtra("classCode", classCode);
+               startActivity(intent);
+           }
+       });
    }
 }
 

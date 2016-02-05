@@ -19,7 +19,7 @@ public class Attendance extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_attendance);
-
+       getSupportActionBar().setTitle(getIntent().getStringExtra("classCode"));
 
        AttendanceList = (ListView) findViewById(R.id.attendence_list);
 
