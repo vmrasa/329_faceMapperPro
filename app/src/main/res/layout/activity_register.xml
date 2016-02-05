@@ -101,7 +101,8 @@
         android:layout_alignTop="@+id/cb_cs309"
         android:layout_toRightOf="@+id/cb_cs309"
         android:layout_marginLeft="15dp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:id="@+id/textView2" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -157,7 +158,8 @@
         android:layout_alignTop="@+id/cb_cpre339"
         android:layout_toRightOf="@+id/cb_cpre339"
         android:layout_marginLeft="15dp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:id="@+id/textView3" />
 
     <Button
         android:layout_width="150dp"
@@ -174,11 +176,10 @@
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:textColor="#000000"
         android:text="Picture 1"
         android:id="@+id/pictureButton1"
-        android:layout_below="@+id/cb_cpre339"
         android:layout_alignParentLeft="true"
         android:textSize="13dp"
         android:onClick="onTakePictureCick"
@@ -186,7 +187,7 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="56dp"
+        android:layout_height="50dp"
         android:textColor="#000000"
         android:id="@+id/register_error"
         android:layout_below="@+id/register"
@@ -194,7 +195,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Picture 3"
         android:id="@+id/pictureButton3"
         android:layout_alignParentBottom="true"
@@ -213,5 +214,19 @@
         android:layout_alignStart="@+id/tv_confirm_password"
         android:layout_alignRight="@+id/pictureButton1"
         android:layout_alignEnd="@+id/pictureButton1" />
+
+    <FrameLayout
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignRight="@+id/register"
+        android:layout_alignEnd="@+id/register"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
 </RelativeLayout>
