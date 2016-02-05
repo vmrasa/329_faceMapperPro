@@ -154,7 +154,6 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("relevantClasses", Arrays.asList(getClasses()));
         user.setPassword(password);
         user.setUsername(username);
-//        user.set("image1", bitmap);
 
         /** OpenCV Logic
          *  Couldn't get 100% working
