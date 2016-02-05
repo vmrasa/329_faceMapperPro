@@ -1,5 +1,9 @@
 package edu.iastate.ing_inc.face_mapper_pro;
 
+//import static org.bytedeco.javacpp.opencv_face.*;
+//import static org.bytedeco.javacpp.opencv_core.*;
+//import static org.bytedeco.javacpp.opencv_imgcodecs.*;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -150,6 +154,17 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("relevantClasses", Arrays.asList(getClasses()));
         user.setPassword(password);
         user.setUsername(username);
+        
+        /** OpenCV Logic
+         *  Couldn't get 100% working
+         * 
+         * FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
+         * 
+         * bitmap[] images = {photo1, photo2, photo3};
+         * 
+         * faceRecognizer.train(images);
+         */
+        
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
