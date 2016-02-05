@@ -102,6 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("relevantClasses", Arrays.asList(getClasses()));
         user.setPassword(password);
         user.setUsername(username);
+//        user.set("image1", bitmap);
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
