@@ -1,13 +1,16 @@
 package edu.iastate.ing_inc.face_mapper_pro;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.parse.GetCallback;
@@ -24,6 +27,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
+    private static final int CAMERA_REQUEST = 1888;
+
+    private ImageView imageView;
+
+    int photoButtonPressed;
+
+    Bitmap photo1;
+    Bitmap photo2;
+    Bitmap photo3;
+
     private EditText etUsername;
     private EditText etPassword1;
     private EditText etPassword2;
@@ -40,6 +53,41 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         gatherElements();
+
+        this.imageView = (ImageView) this.findViewById(R.id.imageView1);
+
+        Button photoButton1 = (Button) this.findViewById(R.id.pictureButton1);
+
+        photoButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoButtonPressed = 1;
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
+
+        Button photoButton2 = (Button) this.findViewById(R.id.pictureButton2);
+
+        photoButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoButtonPressed = 2;
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
+
+        Button photoButton3 = (Button) this.findViewById(R.id.pictureButton3);
+
+        photoButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoButtonPressed = 3;
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
     }
 
     private void gatherElements() {
@@ -187,7 +235,31 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public void onTakePictureCick(View view) {
-        // TODO implement camera
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            if (photoButtonPressed == 1) {
+                photo1 = (Bitmap) data.getExtras().get("data");
+                imageView.setImageBitmap(photo1);
+
+                Button photoButton1 = (Button) this.findViewById(R.id.pictureButton1);
+                photoButton1.setText("Got it!");
+            }
+            else if (photoButtonPressed == 2) {
+                photo2 = (Bitmap) data.getExtras().get("data");
+                imageView.setImageBitmap(photo2);
+
+                Button photoButton2 = (Button) this.findViewById(R.id.pictureButton2);
+                photoButton2.setText("Got it!");
+            }
+            else {
+                photo3 = (Bitmap) data.getExtras().get("data");
+                imageView.setImageBitmap(photo3);
+
+                Button photoButton3 = (Button) this.findViewById(R.id.pictureButton3);
+                photoButton3.setText("Got it!");
+            }
+
+            photoButtonPressed = 0;
+        }
     }
 }
