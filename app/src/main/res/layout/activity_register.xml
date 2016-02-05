@@ -165,21 +165,24 @@
         android:textColor="#000000"
         android:text="Register"
         android:id="@+id/register"
-        android:layout_alignTop="@+id/btn_pictures"
-        android:layout_alignParentRight="true"
         android:textSize="13dp"
-        android:onClick="onRegisterClick"/>
+        android:onClick="onRegisterClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/pictureButton2" />
 
     <Button
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:textColor="#000000"
-        android:text="Take 3 Pictures"
-        android:id="@+id/btn_pictures"
+        android:text="Picture 1"
+        android:id="@+id/pictureButton1"
         android:layout_below="@+id/cb_cpre339"
         android:layout_alignParentLeft="true"
         android:textSize="13dp"
-        android:onClick="onTakePictureCick"/>
+        android:onClick="onTakePictureCick"
+        android:layout_above="@+id/pictureButton2" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -188,5 +191,27 @@
         android:id="@+id/register_error"
         android:layout_below="@+id/register"
         android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Picture 3"
+        android:id="@+id/pictureButton3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/pictureButton2"
+        android:layout_alignEnd="@+id/pictureButton2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Picture 2"
+        android:id="@+id/pictureButton2"
+        android:layout_above="@+id/pictureButton3"
+        android:layout_alignLeft="@+id/tv_confirm_password"
+        android:layout_alignStart="@+id/tv_confirm_password"
+        android:layout_alignRight="@+id/pictureButton1"
+        android:layout_alignEnd="@+id/pictureButton1" />
 
 </RelativeLayout>
