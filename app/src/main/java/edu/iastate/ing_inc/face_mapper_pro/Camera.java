@@ -31,12 +31,26 @@ public class Camera extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(photo); //Change this to send to OpenCV immediately
+            imageView.setImageBitmap(photo); //Change this to send to OpenCV immediately rather than display image
 
-            /**
-             *
-             * OpenCV Logic
-             *
+            /** OpenCV Logic
+             *  Couldn't get 100% working
+             *  Need to loop through Users in the class and check for each person's presence in photo
+             * 
+             * FaceRecognizer faceRecognizer = createFisherFaceRecognizer(); //Needs to be a global variable
+             * 
+             * ArrayList<User> students = new ArrayList<User>();
+             * 
+             * for (int i = 0; i < students.getSize(); i++) {
+             *    bitmap[] images = students.getPhotos();
+             *    faceRecognizer.train(images); 
+             * 
+             *    int accuracy = faceRecognizer.predict(photo);
+             * }
+             * 
+             * if (accuracy > threshold) {
+             *    //Give user positive attendance
+             * }
              */
              
              /**
